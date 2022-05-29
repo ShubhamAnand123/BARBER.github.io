@@ -11,11 +11,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&family=Balsamiq+Sans&family=Kaushan+Script&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
-        *{
-    margin:0;
-    padding: 0;
-}
-
+       
 *{
     margin:0;
     padding: 0;
@@ -87,22 +83,27 @@
     z-index: -1;
     transition:0.5s;
 }
-#navside{
-    width:250px;
-    right:-250px;
-    height:100vh;
-    position: fixed;
-    right:0;
-    top:0;
-    background:#009688;
-    z-index: 2;
-    transition: color 0.5s;
+
+#navside a{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color:white;
+    padding:30px 20px;
+
+
+}
+#pri{
+    background-color: #14c73b;
+    width:350px;
+
+}
+#navside.active{
+    right:0px;
 }
 
 nav ul li {
     list-style: none;
-    
-
     margin:50px 20px;
 
 }
@@ -112,27 +113,28 @@ nav ul li a{
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
     color:#fff;
-}
-#menur
+} 
+#menu
 {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height:51px;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     position: fixed;
-    background: #009688;
+    background: #37afa3;
     right: 30px;
     top:20px;
     border-radius: 3px;
     z-index: 3;
     cursor: pointer;
 }
-#menur img
-{
-    width:20px;
-    margin-top: 15px;
+#menu i{
+    font-size: 42px;
     
-
 }
+
+
 @media screen and (max-width:770px){
     .banner-text h1{
         font-size: 44px;
@@ -152,8 +154,8 @@ nav ul li a{
 
 
 #services{
-    width:100%;
-    padding:7px;
+width:100%;
+padding:7px;
 background: #efefef;
 }
 .service-box{
@@ -219,13 +221,15 @@ background: #efefef;
     }
     hr{
         background: #fff;
-        height: 2px;
         border:0;
-        margin:15px auto;
+        height: 3px;
         width: 60%;
+        margin:15px auto;
+        bottom:30%;
 
-
-    }
+        
+   } 
+   
    
     
 
@@ -492,6 +496,37 @@ font-size: 25px;
     font-size: 40px;
        
 }
+#navside{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            list-style: none;
+            justify-content: flex-start;
+            position: fixed;
+            top:0;
+            text-decoration: none;
+            right:-300px;
+            height: 100vh;
+            width: 300px;
+            background-color:#009688;
+            color:#efefef;
+            box-shadow: 0 40px 60px rgb(0,0,0,0.1);   
+            padding: 80px 0 0 10px;         
+        }
+        #navside li{
+            margin-bottom: 25px;
+            color:white;
+        }
+      #navside.active{
+          right:0px;
+      }
+#close{
+            color:black;
+            font-size: 30px;
+            top:30px;
+            left:30px;
+        }
 #rd{
     height: 40px;
    line-height: 40px;
@@ -535,7 +570,7 @@ font-size: 25px;
 
         
         <div class="banner-btn">
-            <a href="#"><span></span>Find out</a>
+             <a href="#"><span></span>Find out</a>
             <a href="#"><span></span>Read More</a>
 
         </div>
@@ -636,9 +671,9 @@ font-size: 25px;
                 <div class="single-service">
                     <img src="Barber_Shop_img/pic-4.jpg">
                     <div class="overlay"> </div>
-                    <div class="service-dec">
+                    <div class="service-dec"><hr>
                         <h3>Hair Growth</h3>
-                        <hr>
+                        
                         <p>turning no-shows into g contact patrons with revised arrival times</p>
                     </div>
 
@@ -729,46 +764,42 @@ font-size: 25px;
 
              </section>
 
-
     
-    <div id="navside">
-        <nav>
-        <ul>
+             <div id="menu">
+                <i id="bar" class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+   <section id="pro">
+   <div class="pri">
+        <ul id="navside" >
+            <a href="#" id="close"><i class="fa fa-window-close" aria-hidden="true"></i></a>
             <li><a href="#banner">HOME</a></li>
             <li><a href="#feature">FEATURES</a></li>
             <li><a href="#testimonial">TESTIMONIAL</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="#footer">MEET US</a></li>
-
         </ul>
-    </nav>
-
     </div>
-    <div id="menur">
-        <img src="Barber_Shop_img/menu.png" id ="menu">
+</section>     
     </div>
+    
 
     <script>
-        var menur = document.getElementById("menur");
-        var navside = document.getElementById("navside");
-        var menu = document.getElementById("menu");
-        menu.onclick = function()
-        {
-            if(navside.style.right == "-250px")
-            {
-                navside.style.right="0";
-                menur.src="Barber_Shop_img/close.png"
-            }
-            else{
-            navside.style.right == "-250px";
-            menur.src="Barber_Shop_img/close.png"
-    
-            }
-        }
-        var scroll = new SmoothScroll('a[href*="#"]', {
-	speed: 500,
-	speedAsDuration: true
-});
+        const menu = document.getElementById("menu");
+        const navside = document.getElementById("navside");
+        const close = document.getElementById("close");
+        if(menu)
+    {
+        menu.addEventListener('click',() =>{
+            navside.classList.add('active');
+        })
+    }
+    if(close)
+    {
+        close.addEventListener('click',() =>{
+            navside.classList.remove('active');
+        })
+    }
+        
     </script>
 
     
